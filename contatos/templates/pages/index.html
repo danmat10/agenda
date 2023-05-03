@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>{{x}}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Cpf</th>
+                <th>Ativo</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contato in contatos %}
+            <tr>
+                <td>{{contato.id}}</td>
+                <td>{{contato.nome}}</td>
+                <td>{{contato.email}}</td>
+                <td>{{contato.cpf}}</td>
+                <td>
+                    {% if contato.ativo %}
+                    Ativo
+                    {% else %}
+                    Desativado
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'editar_contatos' contato.id %}"><i class="fa fa-edit fa-2x"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+    </div>
+</body>
+
+</html>
