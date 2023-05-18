@@ -37,7 +37,6 @@ def adicionar(request):
         data = request.POST.get('data_nasc')
         telefone = request.POST.get('telefone')
         imagem = request.FILES.get('imagem')
-        print(imagem)
         novo_contato = Contatos(nome=nome,cpf=cpf, email=email, altura=altura, descricao=descricao, data_nascimento=data, telefone=telefone, imagem=imagem, ativo=True)
         novo_contato.save()
         return redirect('home')
@@ -51,7 +50,7 @@ def editar(request, id):
         nome = request.POST.get('nome')
         cpf = request.POST.get('cpf')
         email = request.POST.get('email')
-        altura = request.POST.get('altura')
+        altura = request.POST.get('altura').replace(',', '.')
         descricao = request.POST.get('descricao')
         data = request.POST.get('data_nasc')
         telefone = request.POST.get('telefone')
@@ -61,7 +60,6 @@ def editar(request, id):
         else:
             check = True    
         imagem = request.FILES.get('imagem')
-        print(imagem)
         contato.nome = nome
         contato.cpf = cpf
         contato.email = email
