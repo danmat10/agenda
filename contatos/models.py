@@ -1,13 +1,11 @@
 from django.db import models
 
-# Create your models here.
-
-
 class Contatos(models.Model):
     nome = models.CharField(max_length=255)
-    cpf = models.CharField(max_length=11)
+    imagem = models.ImageField()
+    cpf = models.CharField(max_length=14)
     email = models.EmailField()
-    telefone = models.IntegerField()
+    telefone = models.CharField(max_length=20)
     altura = models.DecimalField(max_digits=3, decimal_places=2)
     descricao = models.TextField()
     data_nascimento = models.DateField()
@@ -18,3 +16,5 @@ class Contatos(models.Model):
 
     class Meta:
         verbose_name_plural = 'Contatos'
+    
+
